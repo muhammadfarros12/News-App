@@ -18,90 +18,98 @@ class NewsItem extends StatelessWidget {
       child: Card(
         elevation: 5,
         color: Colors.white,
+        margin: const EdgeInsets.only(bottom: 24),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: SizedBox(
-            width: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            height: 100,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(18),
-                  child: Image.network(
-                    article.urlToImage,
-                    height: 80,
-                    width: 80,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                    child: SizedBox(
-                  width: 210,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        article.title,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: titleArticle.copyWith(fontSize: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(18),
+                        child: Image.network(
+                          article.urlToImage,
+                          height: 80,
+                          width: 80,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Column(
                         children: [
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.calendar_today_outlined,
-                                size: 12,
-                              ),
-                              const SizedBox(
-                                width: 3,
-                              ),
-                              SizedBox(
-                                width: 70,
-                                child: Text(
-                                  time(
-                                      DateTime.parse(article.publishedAt)),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style:
-                                      authorDateArticle.copyWith(fontSize: 12),
-                                ),
-                              )
-                            ],
+                          Text(article.title,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: titleArticle.copyWith(fontSize: 12)),
+                          const SizedBox(
+                            height: 20,
                           ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.person,
-                                size: 12,
-                              ),
-                              const SizedBox(
-                                width: 3,
-                              ),
-                              SizedBox(
-                                width: 70,
-                                child: Text(
-                                  article.author,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style:
-                                      authorDateArticle.copyWith(fontSize: 12),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.calendar_today_outlined,
+                                      size: 12,
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    SizedBox(
+                                      width: 70,
+                                      child: Text(
+                                        time(DateTime.parse(
+                                            article.publishedAt)),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: authorDateArticle.copyWith(
+                                            fontSize: 12),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              )
-                            ],
-                          ),
+                                // Spacer(),
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.person,
+                                      size: 12,
+                                    ),
+                                    const SizedBox(
+                                      width: 3,
+                                    ),
+                                    SizedBox(
+                                      width: 70,
+                                      child: Text(
+                                        article.author,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: authorDateArticle.copyWith(
+                                            fontSize: 12),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )
                         ],
-                      )
-                    ],
-                  ),
-                )),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             )),
       ),

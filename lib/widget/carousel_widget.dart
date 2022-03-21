@@ -64,7 +64,8 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                           ),
                           Text(
                             article.author,
-                            style: authorDateArticle.copyWith(fontSize: 10),
+                            style: authorDateArticleHeadline.copyWith(
+                                fontSize: 10),
                           )
                         ],
                       ),

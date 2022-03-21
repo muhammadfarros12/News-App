@@ -3,7 +3,7 @@ import 'package:news_testing/model/article.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-String apiKey = '';
+String apiKey = 'isi api sendiri';
 String baseUrl = 'https://newsapi.org/v2';
 
 class News{

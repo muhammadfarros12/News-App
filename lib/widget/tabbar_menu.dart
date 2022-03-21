@@ -18,7 +18,7 @@ class _TabBarMenuState extends State<TabBarMenu>
   late TabController _tabController;
   final List<Tab> myTab = <Tab>[
     const Tab(
-      text: 'Bussiness',
+      text: 'Business',
     ),
     const Tab(
       text: 'Entertainment',
@@ -60,6 +60,7 @@ class _TabBarMenuState extends State<TabBarMenu>
       child: Column(
         children: [
           TabBar(
+            controller: _tabController,
             tabs: myTab,
             labelColor: Colors.deepOrangeAccent,
             unselectedLabelColor: Colors.black,
@@ -75,13 +76,14 @@ class _TabBarMenuState extends State<TabBarMenu>
           ),
           Expanded(
               child: TabBarView(
+                  controller: _tabController,
                   children: myTab.map((Tab tab) {
-            return FutureBuilder(
-                future: news.getNewsByCategory(tab.text.toString()),
-                builder: (context, snapshot) => snapshot.data != null
-                    ? _listNewsCategory(snapshot.data as List<Article>)
-                    : const Center(child: CircularProgressIndicator()));
-          }).toList()))
+                    return FutureBuilder(
+                        future: news.getNewsByCategory(tab.text.toString()),
+                        builder: (context, snapshot) => snapshot.data != null
+                            ? _listNewsCategory(snapshot.data as List<Article>)
+                            : const Center(child: CircularProgressIndicator()));
+                  }).toList()))
         ],
       ),
     );
@@ -89,12 +91,10 @@ class _TabBarMenuState extends State<TabBarMenu>
 
   Widget _listNewsCategory(List<Article> article) {
     return Container(
-        height:  MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height,
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: ListView.builder(
             itemBuilder: (context, index) => NewsItem(article: article[index]),
             itemCount: article.length));
   }
-
 }
-

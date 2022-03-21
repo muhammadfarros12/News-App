@@ -16,7 +16,7 @@ class Article {
   factory Article.fromJson(Map<String, dynamic> json) => Article(
     author: json["author"]  ?? 'null',
     title: json["title"]  ?? 'null',
-    urlToImage: json["urlToImage"] ?? 'null',
+    urlToImage: json["urlToImage"] ?? 'https://www.btklsby.go.id/images/placeholder/basic.png',
     publishedAt: json["publishedAt"] ?? 'null',
     content: json["content"] ?? 'null'
   );
