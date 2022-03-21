@@ -10,15 +10,15 @@ class Article {
   String author;
   String title;
   String urlToImage;
-  DateTime publishedAt;
+  String publishedAt;
   String content;
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
-    author: json["author"] == null ? null : json["author"],
-    title: json["title"],
-    urlToImage: json["urlToImage"] == null ? null : json["urlToImage"],
-    publishedAt: DateTime.parse(json["publishedAt"]),
-    content: json["content"] == null ? null : json["content"],
+    author: json["author"]  ?? 'null',
+    title: json["title"]  ?? 'null',
+    urlToImage: json["urlToImage"] ?? 'null',
+    publishedAt: json["publishedAt"] ?? 'null',
+    content: json["content"] ?? 'null'
   );
 
 }
