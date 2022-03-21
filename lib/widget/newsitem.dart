@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_testing/screen/detailpage.dart';
 import 'package:news_testing/utility/utils.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -13,7 +14,7 @@ class NewsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // to detail
+        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPageScreen(article: article)));
       },
       child: Card(
         elevation: 5,
